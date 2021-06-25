@@ -1,0 +1,19 @@
+{
+  "Circle": {
+    "title": "Calculate Circle Area",
+    "description": "Calculates circle",
+    "minOccurs": 1,
+    "schema": {
+      "type": "object",
+      "properties": {
+        "radius": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "radius"
+      ]
+    }
+  }
+}
+
