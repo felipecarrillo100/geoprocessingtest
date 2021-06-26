@@ -7,14 +7,37 @@
       "title": "A localisation form example",
       "type": "object",
       "required": [
+        "geoCoordinates",
         "boundingBox"
       ],
       "properties": {
+        "geoCoordinates": {
+          "type": "object",
+          "title": "Enter a point",
+          "required": [
+            "lat",
+            "lon"
+          ],
+          "properties": {
+            "crs": {
+              "type": "string"
+            },
+            "lat": {
+              "default": 0,
+              "type": "number",
+              "minimum": -90,
+              "maximum": 90
+            },
+            "lon": {
+              "default": 0,
+              "type": "number",
+              "minimum": -180,
+              "maximum": 180
+            }
+          }
+        },
         "boundingBox": {
           "type": "object",
-          "required": [
-            "coordinates"
-          ],
           "properties" : {
             "crs": {
               "type": "string"
@@ -22,6 +45,8 @@
             "coordinates": {
               "type": "array",
               "title": "Bounding Box",
+              "minItems": 4,
+              "maxItems": 4,
               "items": [
                 { "type": "number",
                   "title": "Min Longitude",
@@ -40,6 +65,28 @@
                   "default": 1
                 }
               ]
+            }
+          }
+        },
+        "polygon": {
+          "type": "object",
+          "properties": {
+            "crs": "string",
+            "coordinates": {
+              "type": "array",
+              "title": "Polygon",
+              "default": [[[-6,4],[7,4],[7,-6],[-6,-6],[-6,4]]],
+              "items": {
+                "type": "array",
+                "minItems": 4,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
             }
           }
         }
