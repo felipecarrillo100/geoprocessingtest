@@ -71,7 +71,9 @@
         "polygon": {
           "type": "object",
           "properties": {
-            "crs": "string",
+            "crs": {
+              "type": "string"
+            },
             "coordinates": {
               "type": "array",
               "title": "Polygon",
@@ -105,6 +107,9 @@
             },
             "polygon": {
               "ui:field": "polygon"
+            },
+            "polyline": {
+              "ui:field": "polyline"
             }
           }
         }

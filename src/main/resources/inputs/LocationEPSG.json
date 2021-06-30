@@ -7,7 +7,8 @@
       "title": "A localisation form example",
       "type": "object",
       "required": [
-        "boundingBox"
+        "boundingBox",
+        "polygon"
       ],
       "properties": {
         "boundingBox": {
@@ -15,7 +16,7 @@
           "required": [
             "coordinates"
           ],
-          "properties" : {
+          "properties": {
             "crs": {
               "type": "string"
             },
@@ -23,23 +24,115 @@
               "type": "array",
               "title": "Bounding Box",
               "items": [
-                { "type": "number",
+                {
+                  "type": "number",
                   "title": "Min Longitude",
                   "default": -1
                 },
-                { "type": "number",
+                {
+                  "type": "number",
                   "title": "Min Latitude",
                   "default": -1
                 },
-                { "type": "number",
+                {
+                  "type": "number",
                   "title": "Max Longitude",
                   "default": 1
                 },
-                { "type": "number",
+                {
+                  "type": "number",
                   "title": "Max Latitude",
                   "default": 1
                 }
               ]
+            }
+          }
+        },
+        "polygon": {
+          "type": "object",
+          "properties": {
+            "crs": {
+              "type": "string"
+            },
+            "coordinates": {
+              "type": "array",
+              "title": "Polygon",
+              "default": [
+                [
+                  [
+                    -6,
+                    4
+                  ],
+                  [
+                    7,
+                    4
+                  ],
+                  [
+                    7,
+                    -6
+                  ],
+                  [
+                    -6,
+                    -6
+                  ],
+                  [
+                    -6,
+                    4
+                  ]
+                ]
+              ],
+              "items": {
+                "type": "array",
+                "minItems": 4,
+                "items": {
+                  "type": "array",
+                  "minItems": 2,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "polyline": {
+          "type": "object",
+          "properties": {
+            "crs": {
+              "type": "string"
+            },
+            "coordinates": {
+              "default": [
+                [
+                  -6,
+                  4
+                ],
+                [
+                  7,
+                  4
+                ],
+                [
+                  7,
+                  -6
+                ],
+                [
+                  -6,
+                  -6
+                ],
+                [
+                  -6,
+                  4
+                ]
+              ],
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "number"
+                }
+              }
             }
           }
         }
@@ -58,6 +151,9 @@
             },
             "polygon": {
               "ui:field": "polygon"
+            },
+            "polyline": {
+              "ui:field": "polyline"
             }
           }
         }
